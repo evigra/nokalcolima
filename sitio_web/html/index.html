@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es-ES">
+    <head>		    
+    	<title>{html_head_title}</title>
+        <meta name="description" content="{html_head_description}" />
+        <meta name="keywords" content="{html_head_keywords}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../../sitio_web/css/{html_head_css}.css">
+        <link rel="stylesheet" type="text/css" href="../../sitio_web/css/estilo.css">
+        <link rel="stylesheet" type="text/css" href="../../sitio_web/css/jquery-ui.css">
+
+        <meta property="og:url"           content="http://{html_head_url}" />
+        <meta property="og:type"          content="website" />
+        
+        <meta property="fb:app_id" content="1984430411957885">
+        
+        <meta property="og:title"         content="{html_head_title}" />
+        <meta property="og:description"   content="{html_head_description}" />
+        
+        {html_head_type}
+
+        <link rel="icon" href="../../sitio_web/img/icono.png" type="image/x-icon">
+        <script src="../../sitio_web/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"></script>
+  
+    </head>
+    <body>
+
+      <form action="" method="POST" enctype="multipart/form-data">	
+        {html_body}  
+      </form>
+
+      <script src="../../sitio_web/js/jquery.js"></script>
+      <script src="../../sitio_web/js/jquery-ui.js"></script>
+
+
+      <script>
+        $(document).ready(function()
+        {       
+          if($("font#accion").length>0)
+          {
+            $("font#accion").button()
+              .click(function()
+              {				
+                $(this).attr('disabled', true);
+                $(this).html('Cargando'); 
+                
+                $("form").submit();		
+              }
+            );		
+            if($("div.tox-statusbar").length>0)
+            {
+              $("div.tox-statusbar").hide();
+            }                                    
+          }	    
+
+          if($("div.developer").length>0)
+          {
+            $("div.developer").dialog({width:700});
+          }	    
+
+      
+          
+          let map;
+
+          async function initMap() {
+            const { Map } = await google.maps.importLibrary("maps");
+
+            map = new Map(document.getElementById("map"), {
+              center: { lat: 19.05752275, lng: -104.297859 },
+              zoom: 8,
+            });
+          }
+
+
+          initMap();
+
+          
+
+          $("div.cargar ").on( "click", function() {            
+            tinymce.init({
+              selector: 'textarea',
+              height: 250,
+              menubar: false,
+              language: 'es',          
+              plugins: [
+                'advlist autolink lists link charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar: 'undo redo | bold italic backcolor | ' +
+              'alignleft aligncenter alignright alignjustify |' +
+              ' outdent indent | removeformat ',
+              
+              content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+            });
+            
+
+          } );
+
+
+        });
+
+       
+      </script>
+
+    </body>    
+</html>
