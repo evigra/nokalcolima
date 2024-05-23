@@ -40,6 +40,7 @@
 		
 	}
 
+	if($_REQUEST["class"]=="")	$_REQUEST["class"]			="Mapa";
 
 	if(isset($_COOKIE["designia"]))
 	{

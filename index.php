@@ -45,7 +45,9 @@
 		require_once($path_controlador);			
 	}	
 	else
-		echo "ERROR: La pagina que ingresaste no existe";	
+		echo "ERROR: La pagina que ingresaste no existe <br>
+			$path_controlador
+		";	
 
 		
 
