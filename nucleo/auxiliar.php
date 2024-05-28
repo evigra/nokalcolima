@@ -6,7 +6,7 @@
 		##############################################################################
 		var $html		="";
 		var $words		=Array(
-			"html_head_title" 	=>"Designia :: ",
+			"html_head_title" 	=>"NOKAL :: ",
 			"html_create" 		=>"",
 		);
 	

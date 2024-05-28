@@ -2,7 +2,7 @@
 	$objeto			=new general();
 
 	$objeto->words["html_head_css"]			="default";
-	$objeto->words["html_head_title"]		.="Acerca de";
+	$objeto->words["html_head_title"]		.="Nosotros";
 	
 	$objeto->words["html_head_description"]	="Esta descripcion";
 	$objeto->words["html_head_keywords"]	="Designia, Designia.vip, Eventos, events";
@@ -10,7 +10,7 @@
 	$objeto->words["html_body"]				=$objeto->__VIEW_BASE("body", $objeto->words);
 
 	$objeto->words["html_left"]				="";
-	$objeto->words["html_center"]			=$objeto->__VIEW_BASE("acerca", $objeto->words);
+	$objeto->words["html_center"]			=$objeto->__BROWSE();
 	$objeto->words["html_right"]			="";
 
 	$objeto->words["html_menu"]				=$objeto->__VIEW_BASE("menu", $objeto->words);
