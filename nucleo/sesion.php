@@ -1,46 +1,20 @@
 <?php		
-	
-	if($_REQUEST["datos"])	
-	{
-		
-		$vdatos								=explode(":", $_REQUEST["datos"]);
-		$_REQUEST["user"]					=$vdatos[0];
+	print_r($_REQUEST);
 
-		#if(@$vdatos[1]=="")					$vdatos[1]="Portada/Show/";
-		if(@$vdatos[1]=="")					$vdatos[1]="Chilaquil/Show/";
-		if($vdatos[1]!="")	
+	if(isset($_REQUEST["datos"]) AND $_REQUEST["datos"]=="")					$_REQUEST["datos"]="Mapa/Show/";	
+
+	if(isset($_REQUEST["datos"]))	
+	{		
+		if($_REQUEST["datos"]!="")	
 		{
-			$vpath							=explode("/", $vdatos[1]);	
-			#if(count($vpath)>1)
-			{
-				$_REQUEST["path"]			=$vpath[0] . "/";
-				$_REQUEST["method"]			=$vpath[1];
-				$_REQUEST["class"]			=$vpath[0];
-			}
+			$vpath						=explode("/", $_REQUEST["datos"]);	
+			$_REQUEST["path"]			=$vpath[0] . "/";
+			$_REQUEST["method"]			=$vpath[1];
+			$_REQUEST["class"]			=$vpath[0];
 		}
 		
-		
-
-		if($_REQUEST["user"]=="Sociales/Show/" and $_SERVER["HTTP_HOST"]=="designia.vip")
-		{	
-			$_REQUEST["user"]="wwww";			
-			$_SERVER["HTTP_HOST"]="http://".$_REQUEST["user"] .".". $_SERVER["HTTP_HOST"];
-			Header ("Location: {$_SERVER["HTTP_HOST"]}");			
-		}
-		if($_REQUEST["user"]=="Sociales/Show/" and $_SERVER["HTTP_HOST"]=="designia.localhost")
-		{			
-			$_REQUEST["user"]="wwww";	
-			$_SERVER["HTTP_HOST"]="http://".$_REQUEST["user"] .".". $_SERVER["HTTP_HOST"];		
-			Header ("Location: {$_SERVER["HTTP_HOST"]}");
-		}
-		$vserver=explode(".", $_SERVER["HTTP_HOST"]);
-		$_REQUEST["server"]	=$vserver[1] . "." . @$vserver[2];
-
-		unset($_REQUEST["datos"]);
-		
+		unset($_REQUEST["datos"]);	
 	}
-
-	if($_REQUEST["class"]=="")	$_REQUEST["class"]			="Mapa";
 
 	if(isset($_COOKIE["designia"]))
 	{
@@ -51,12 +25,10 @@
 			$usuarios_sesion						="PHPSESSID";
 			session_name($usuarios_sesion);
 			session_start();
-			#session_cache_limiter('nocache,private');			
 		}
 
 		if(!isset($_SESSION["user"]))
 		{
-
 			$path_model="modelo/Sesion.php";		
 			require_once($path_model);			
 			$objeto			=new sesion();
@@ -76,7 +48,7 @@
 			unset($_COOKIE['designia']);
 			//setcookie("designia", "", time() - 3600, "/");
 		}	
-		Header ("Location: http://" . $_REQUEST["user"] . "." . $_REQUEST["server"] . "/Chilaquil/Show/");			
+		Header ("Location: http://"  . $_REQUEST["server"] . "/Mapa/Show/");			
 	}
 	
 	$pre_path="";	
