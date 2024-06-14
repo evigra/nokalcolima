@@ -2,7 +2,7 @@
 	$objeto			=new general();
 
 	$objeto->words["html_head_css"]			="default";
-	$objeto->words["html_head_title"]		.="Chilaquil";
+	$objeto->words["html_head_title"]		.="Busqueda";
 	
 	$objeto->words["html_head_description"]	="Esta seccion es un clilaquil de designios";
 	$objeto->words["html_head_keywords"]	="Designia, Designia.vip, Eventos, events";

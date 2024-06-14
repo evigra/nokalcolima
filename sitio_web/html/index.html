@@ -61,25 +61,79 @@
           if($("div.developer").length>0)
           {
             $("div.developer").dialog({width:700});
-          }	    
-
-      
-                  
-          let map;
-
+          }	         
+    
           async function initMap() {
+            // Request needed libraries.
             const { Map } = await google.maps.importLibrary("maps");
-
-            map = new Map(document.getElementById("map"), {
-              center: { lat: 19.2397, lng: -103.7291 },
-              zoom: 14,
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+            const center = { lat: 19.2397, lng: -103.7291 };
+            const map = new Map(document.getElementById("map"), {
+              zoom: 13,
+              center,
+              mapId: "4504f8b37365c3d0",
             });
+
+            const image ="../../sitio_web/img/icono.png";
+
+            for (const property of properties) {              
+              const AdvancedMarkerElement = new google.maps.Marker({
+                map,
+                position: property.position,
+                title: property.title,
+                icon: image,
+              });
+
+              const contentString =
+                '<h1>' + property.title + '</h1>' + 
+                property.price + ' * ' + property.bed + ' Cuartos ' + ' * ' + property.bath + ' Baños ' +
+                '<h3>' + property.description + '</h3>' +
+                '<h3>' +property.address + '<h3>';
+
+              const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                ariaLabel: "Uluru",
+              });
+
+              AdvancedMarkerElement.addListener("click", () => {                
+                infowindow.open({
+                  anchor: AdvancedMarkerElement,
+                  map,
+                });
+              });
+
+            }
           }
 
+const properties = [
+  {
+    title: "Casa Laurel-Luv2relax",
+    address: "215 Emily St, MountainView, CA",
+    description: "Single family house with modern design",
+    price: "$ 3,889,000",
+    type: "home",
+    bed: 5,
+    bath: 4.5,
+    size: 300,
+    position: {
+      lat: 19.2397, lng: -103.7291   },
+  },
+  {
+    title: "742 Frente al Mar Condo/Hotel",
+    address: "215 Emily St, MountainView, CA",
+    description: "Single family house with modern design",
+    price: "$ 2,545,000",
+    type: "home",
+    bed: 2,
+    bath: 1,
+    size: 300,
+    position: {
+      lat: 19.22, lng: -103.71   },
+  },
 
-          initMap();
-
-          
+  
+];
+initMap();
 
           $("div.cargar ").on( "click", function() {            
             tinymce.init({

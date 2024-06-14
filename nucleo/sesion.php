@@ -1,6 +1,4 @@
 <?php		
-	print_r($_REQUEST);
-
 	if(isset($_REQUEST["datos"]) AND $_REQUEST["datos"]=="")					$_REQUEST["datos"]="Mapa/Show/";	
 
 	if(isset($_REQUEST["datos"]))	
