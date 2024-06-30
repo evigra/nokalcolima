@@ -10,9 +10,7 @@
 	$objeto->words["html_body"]				=$objeto->__VIEW_BASE("body", $objeto->words);
 
 	$objeto->words["html_left"]				="";
-	$objeto->words["html_center"]			="Misión: Crear una página web que acerque al usuario a encontrar una casa en renta, facilitando la búsqueda y optimizando sus tiempos.
-
-Visión: posicionarse como una marca local en donde podrás encontrar una casa en renta en el cual te sientas seguro sin tanto esfuerzo y de manera exclusiva.";
+	$objeto->words["html_center"]			="$objeto->__BROWSE()";
 	$objeto->words["html_right"]			="";
 
 	$objeto->words["html_menu"]				=$objeto->__VIEW_BASE("menu", $objeto->words);
